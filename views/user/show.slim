@@ -1,0 +1,10 @@
+
+table
+  tr
+    th Name
+    th Amount
+
+  tr
+    - user_stocks.each do |stock|
+      td #{stock["stockname"]} 
+      td #{stock["amount"]}
