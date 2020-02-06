@@ -5,6 +5,18 @@ require 'bcrypt'
 
 enable :sessions
 
+def connect_to_db(db_name)
+  db = SQLite3::Database.new(db_name)
+  db.results_as_hash = true
+end
+
+before do
+  if (session[:userid] == nil) && (request.path != '/')
+    session[:error_message] = 'Not logged in'
+    redirect('/error')
+  end
+end
+
 get '/' do
   slim(:index)
 end
@@ -25,8 +37,7 @@ get '/stocks' do
     redirect('/error')
   end
 
-  db = SQLite3::Database.new('db/stonks.db')
-  db.results_as_hash = true
+  db = connect_to_db('db/stonks.db')
 
   results = db.execute('SELECT * FROM stocks')
 
@@ -48,8 +59,9 @@ get '/my_page' do
 
   user_stock_relation.each_with_index do |relation, index|
     stock = db.execute('SELECT * FROM stocks WHERE stockid = ?', relation['stockid']) 
-    user_stocks[index]['stockname'] = stock[0]['stockname']
+    user_stocks[index]['stockname'] = stock[index]['stockname']
     user_stocks[index]['amount'] = relation['amount']
+    user_stocks[index]['stockid'] = relation['stockid']
   end
 
   slim(:'user/show', locals:{user_stocks:user_stocks})
@@ -59,8 +71,7 @@ post '/login' do
   username = params[:username]
   password = params[:password]
 
-  db = SQLite3::Database.new('db/stonks.db')
-  db.results_as_hash = true
+  db = connect_to_db('db/stonks.db')
 
   results = db.execute('SELECT * FROM users WHERE username = ?', username)
   p results
@@ -87,8 +98,7 @@ post '/register' do
   username = params[:username]
   password = params[:password]
 
-  db = SQLite3::Database.new('db/stonks.db')
-  db.results_as_hash = true
+  db = connect_to_db('db/stonks.db')
 
   password_digest = BCrypt::Password.create(password)
 
