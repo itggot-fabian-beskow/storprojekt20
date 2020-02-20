@@ -3,15 +3,12 @@ require 'slim'
 require 'sqlite3'
 require 'bcrypt'
 
+require_relative './model.rb'
+
 enable :sessions
 
-def connect_to_db(db_name)
-  db = SQLite3::Database.new(db_name)
-  db.results_as_hash = true
-end
-
 before do
-  if (session[:userid] == nil) && (request.path != '/')
+  if ((((session[:userid] == nil) && (request.path != '/')) && (request.path != '/error')) && (request.path != '/login')) && (request.path != '/register')
     session[:error_message] = 'Not logged in'
     redirect('/error')
   end
@@ -71,32 +68,47 @@ post '/login' do
   username = params[:username]
   password = params[:password]
 
-  db = connect_to_db('db/stonks.db')
+  #seconds = Time.now.to_i
+  #
+  #if session[:last_login_time] == nil
+  #  session[:last_login_time] = []
+  #end
+  #session[:last_login_time].unshift(seconds)
+  #
+  #if session[:last_login_time].length >= 3
+  #  value = session[:last_login_time][0] * 2 - session[:last_login_time][1] + session[:last_login_time][2] > 30
+  #else
+  #  session[:last_login_time].unshift(seconds)
+  #end
+  #
+  #p session[:last_login_time]
 
-  results = db.execute('SELECT * FROM users WHERE username = ?', username)
-  p results
-  if results == [] 
+  userid = check_login(username, password)
+
+  if userid == -1 # No user found
     session[:error_message] = 'No user with that username'
     redirect('/error')
-  end
-
-  password_digest = results[0]['password_digest']
-  userid = results[0]['userid']
-
-  if BCrypt::Password.new(password_digest) == password 
-    session[:userid] = userid
-    redirect('/stocks')
-  else
+  elsif userid == 0 # Wrong password
     session[:error_message] = 'Wrong password'
     redirect('/error')
+  else
+    session[:userid] = userid
+    redirect('/stocks')
   end
-
-  #db.execute('INSERT INTO users (username, password_digest) VALUES (?, ?)', username, password_digest)
 end
 
 post '/register' do
   username = params[:username]
   password = params[:password]
+
+  if password.length < 6
+    session[:error_message] = 'Password too short'
+    redirect('/error')
+  elsif username.length < 4
+    session[:error_message] = 'Username too short'
+    redirect('/error')
+  end
+
 
   db = connect_to_db('db/stonks.db')
 
@@ -104,5 +116,10 @@ post '/register' do
 
   db.execute('INSERT INTO users (username, password_digest) VALUES (?, ?)', username, password_digest)
 
+  redirect('/')
+end
+
+get '/logout' do
+  session.destroy
   redirect('/')
 end
