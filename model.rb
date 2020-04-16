@@ -1,18 +1,12 @@
 require 'sqlite3'
 require 'bcrypt'
 
-def connect_to_db(db_name)
-  db = SQLite3::Database.new(db_name)
-  db.results_as_hash = true
-
-  return db
-end
+$db = SQLite3::Database.new('db/stonks.db')
+$db.results_as_hash = true
 
 def check_login(username, password)
-  # MOVE TO MODEL
-  db = connect_to_db('db/stonks.db')
 
-  results = db.execute('SELECT * FROM users WHERE username = ?', username)
+  results = $db.execute('SELECT * FROM users WHERE username = ?', username)
   p results
   if results == [] 
     return -1
@@ -26,4 +20,20 @@ def check_login(username, password)
   else
     return 0
   end
+end
+
+def register_user(username, password_digest)
+  $db.execute('INSERT INTO users (username, password_digest) VALUES (?, ?)', username, password_digest)
+end
+
+def get_all_data(table)
+  return $db.execute('SELECT * FROM ' + table);
+end
+
+def get_user_data(table, userid)
+  return $db.execute('SELECT * FROM ' + table + ' WHERE userid = ?', userid)
+end
+
+def get_stock_data(table, stockid)
+  return $db.execute('SELECT * FROM ' + table + ' WHERE stockid = ?', stockid)
 end
