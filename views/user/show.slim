@@ -5,8 +5,26 @@ table
     th Name
     th Amount
 
-  tr
-    - user_stocks.each do |stock|
+  - user_stocks.each do |stock|
+    tr
       td #{stock["stockid"]} 
       td #{stock["stockname"]} 
       td #{stock["amount"]}
+
+h3 Sell
+form action="/sellings" method="post"
+  table
+    tr 
+      th ID
+      th Amount
+      th Price
+      th Sell
+    tr
+      td
+        input type="number" name="stockid" placeholder="stock id"
+      td
+        input type="number" name="amount" value="10" placeholder="amount"
+      td
+        input type="number" name="price" value="10" placeholder="price"
+      td
+        input type="submit" value="sell"

@@ -1,9 +1,10 @@
-require 'sinatra'
+require 'sinatra' 
 require 'slim'
 require 'sqlite3'
 require 'bcrypt'
 
 require_relative 'model'
+include Model
 
 enable :sessions
 
@@ -15,6 +16,9 @@ before do
 end
 
 get '/' do
+  if session[:userid] != nil
+    redirect('/stocks//')
+  end
   slim(:index)
 end
 
@@ -22,52 +26,106 @@ get '/error' do
   if session[:error_message] != nil
     error_message = session[:error_message]
     session[:error_message] = nil
-    return error_message
   else 
-    return 'Undefined Error'
+    error_message = 'Undefined Error'
   end
+  slim(:'/error', locals:{message:error_message})
 end
 
-get '/stocks' do
+get '/stocks/' do
   results = get_all_data('stocks')
 
-  slim(:'stock/index', locals:{stock_list:results})
+  slim(:'/stock/index', locals:{stock_list:results})
+end
+
+post '/stocks' do
+  # Check if admin
+  results = get_user_data('users', session[:userid])
+  if results[0]['privilege'] > 0
+    create_stock(params["stockname"], params["amount"])
+    redirect('/stocks/')
+  else
+    session[:error_message] = "Only admins can create stock"
+  end
 end
 
 get '/stocks/new' do
 
+  # check if admin
   results = get_user_data('users', session[:userid])
-  p results
-
-  if results[0]['admin']
-    return 'Hello!'
+  if results[0]['privilege'] > 0
+    slim(:'/stock/new')
   else
-    return 'get out'
+    session[:error_message] = 'Administrator only'
+    redirect('/error')
   end
-
 end
 
 get '/sellings/' do
-  sellings = get_all_data('relation_user_stock_sale')
+  #sellings = get_all_data('relation_user_stock_sale')
+  sellings = get_all_listings()
 
-  slim(:'sellings/show', locals:{listings:sellings})
+  slim(:'selling/show', locals:{listings:sellings})
 end
 
-get '/sellings/new/' do
-end
+post '/sellings' do
+  selling_stockid = params[:stockid].to_i
+  selling_amount = params[:amount].to_i
+  selling_price = params[:price].to_i
 
-get '/my_page' do
+  if selling_stockid == nil || selling_stockid < 1
+    session['error_message'] = 'Invalid stock ID'
+    redirect('/error')
+  elsif selling_amount == nil || selling_amount < 1
+    session['error_message'] = 'Invalid selling amount'
+    redirect('/error')
+  elsif selling_price == nil || selling_price < 1
+    session['error_message'] = 'Invalid selling price'
+    redirect('/error')
+  end
 
   user_stock_relation = get_user_data('relation_user_stock', session[:userid])
-
-  user_stocks = [{}]
-
-  user_stock_relation.each_with_index do |relation, index|
-    stock = get_stock_data('stocks', relation['stockid'])
-    user_stocks[index]['stockname'] = stock[index]['stockname']
-    user_stocks[index]['amount'] = relation['amount']
-    user_stocks[index]['stockid'] = relation['stockid']
+  # Check if user has enough of stock
+  
+  user_stock_relation.each do |relation|
+    if relation['stockid'] == selling_stockid
+      if relation['amount'] < selling_amount
+        session[:error_message] = 'Not enough stock!'
+        redirect('/error')
+      end
+    end
   end
+
+  # post selling
+  post_selling(session[:userid], selling_stockid, selling_amount, selling_price)
+
+  redirect('/sellings/')
+end
+
+post '/sellings/:listingid/delete' do
+  listingid = params[:listingid]
+  listing_data = get_listing_data(listingid)[0]
+
+  if session[:userid].to_i == listing_data["userid"]
+    delete_listing(listingid)
+    redirect('/sellings/')
+  else
+    result = add_stock_to_user(session[:userid], listing_data['userid'], listing_data['stockid'], listing_data['amount'])
+
+    delete_listing(listingid)
+
+    if result == -1
+      session[:error_message] = 'Seller does not have enough stock, listing deleted.'
+      redirect('/error')
+    end
+
+    redirect('/sellings/')
+  end
+end
+
+get '/my_page/' do
+  
+  user_stocks = get_user_stocks(session[:userid])
 
   slim(:'user/show', locals:{user_stocks:user_stocks})
 end
@@ -75,6 +133,27 @@ end
 post '/login' do
   username = params[:username]
   password = params[:password]
+
+  # Login security
+  if session[:login_attempts] == nil
+    session[:login_attempts] = 1
+  else
+    session[:login_attempts] += 1
+  end
+
+  if session[:login_attempts] > 3
+    session[:lockout_time] = Time.now.to_i
+    session[:login_attempts] = 0
+  end
+
+  if session[:lockout_time] != nil
+    if Time.now.to_i - session[:lockout_time] < 30
+      session[:error_message] = 'Too many login attempts!'
+      redirect('/error')
+    else
+      session[:lockout_time] = nil
+    end
+  end
 
   userid = check_login(username, password)
 
@@ -86,7 +165,7 @@ post '/login' do
     redirect('/error')
   else
     session[:userid] = userid
-    redirect('/stocks')
+    redirect('/stocks/')
   end
 end
 
@@ -110,7 +189,7 @@ post '/register' do
   redirect('/')
 end
 
-get '/logout' do
+get '/logout/' do
   session.destroy
   redirect('/')
 end

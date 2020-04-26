@@ -1,1 +1,27 @@
-p Hello
+h2 Current Listings
+
+table
+  tr
+    th ID
+    th User
+    th Stock
+    th Amount
+    th Price
+
+  - listings.each do |listing|
+    tr
+      td #{listing["id"]}
+      td #{listing["username"]}
+      td #{listing["stockname"]}
+      td #{listing["amount"]}
+      td $#{listing["price"]}
+      - if session["userid"].to_i == listing["userid"].to_i
+        td
+          form action="/sellings/#{listing["id"]}/delete" method="post"
+            - #input type="hidden" name="userid" value="#{listing["userid"]}"
+            input type="submit" value="Delete"
+      - else
+        td 
+          form action="/sellings/#{listing["id"]}/delete" method="post"
+            - #input type="hidden" name="userid" value="#{listing["userid"]}"
+            input type="submit" value="Buy"
