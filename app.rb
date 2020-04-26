@@ -17,7 +17,7 @@ end
 
 get '/' do
   if session[:userid] != nil
-    redirect('/stocks//')
+    redirect('/stocks/')
   end
   slim(:index)
 end
@@ -123,11 +123,38 @@ post '/sellings/:listingid/delete' do
   end
 end
 
-get '/my_page/' do
-  
-  user_stocks = get_user_stocks(session[:userid])
+get '/users/:userid' do
 
-  slim(:'user/show', locals:{user_stocks:user_stocks})
+  if params[:userid].to_i != session[:userid].to_i
+    results = get_user_data('users', session[:userid])
+    if results[0]['privilege'] == 0
+      session[:error_message] = 'Only administrators can view others profiles'
+      redirect('/error')
+    end
+  end
+  
+  user_stocks = get_user_stocks(params[:userid])
+  user_info = get_user_data('users', params[:userid])
+  if user_info == []
+    session[:error_message] = 'User does not exist'
+    redirect('/error')
+  end
+  slim(:'user/show', locals:{user_stocks:user_stocks, userid:params[:userid]})
+end
+
+post '/users/:userid/delete' do
+  if params[:userid].to_i != session[:userid].to_i
+    results = get_user_data('users', session[:userid])
+    if results[0]['privilege'] == 0
+      session[:error_message] = 'Only administrators can delete others profiles'
+      redirect('/error')
+    end
+  end
+
+  delete_user(params[:userid])
+  session.destroy
+
+  redirect('/')
 end
 
 post '/login' do

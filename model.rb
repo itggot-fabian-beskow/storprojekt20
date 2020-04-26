@@ -94,4 +94,7 @@ module Model
     return $db.execute('SELECT stocks.stockname, relation_user_stock.stockid, relation_user_stock.amount FROM relation_user_stock INNER JOIN stocks ON relation_user_stock.stockid = stocks.stockid WHERE userid=?', userid)
   end
 
+  def delete_user(userid)
+    $db.execute('DELETE FROM users WHERE userid=?', userid)
+  end
 end
