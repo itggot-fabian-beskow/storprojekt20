@@ -15,6 +15,8 @@ before do
   end
 end
 
+# Display landing and login page
+#
 get '/' do
   if session[:userid] != nil
     redirect('/stocks/')
@@ -22,6 +24,8 @@ get '/' do
   slim(:index)
 end
 
+# Displays an error message
+#
 get '/error' do
   if session[:error_message] != nil
     error_message = session[:error_message]
@@ -32,12 +36,20 @@ get '/error' do
   slim(:'/error', locals:{message:error_message})
 end
 
+# Displays all the stocks
+#
 get '/stocks/' do
   results = get_all_data('stocks')
 
   slim(:'/stock/index', locals:{stock_list:results})
 end
 
+# Creates a new stock and redirects to '/stocks/'. Only for admins
+#
+# @param [String] stockname The name of the stock to be created
+# @param [Integer] amount The amount of the stock to be created
+#
+# @see Model#create_stock
 post '/stocks' do
   # Check if admin
   results = get_user_data('users', session[:userid])
@@ -46,9 +58,12 @@ post '/stocks' do
     redirect('/stocks/')
   else
     session[:error_message] = "Only admins can create stock"
+    redirect('/error')
   end
 end
 
+# Displays stock creating form for administrators
+#
 get '/stocks/new' do
 
   # check if admin
@@ -61,6 +76,8 @@ get '/stocks/new' do
   end
 end
 
+# Display all current listings
+#
 get '/sellings/' do
   #sellings = get_all_data('relation_user_stock_sale')
   sellings = get_all_listings()
@@ -68,6 +85,13 @@ get '/sellings/' do
   slim(:'selling/show', locals:{listings:sellings})
 end
 
+# Create a new listing for user and redirects to '/sellings'
+#
+# @param [Integer] stockid ID of the stock to be sold
+# @param [Integer] amount Amount of the stock to be sold
+# @param [Integer] price Price of the whole sale
+#
+# @see Model#post_selling
 post '/sellings' do
   selling_stockid = params[:stockid].to_i
   selling_amount = params[:amount].to_i
@@ -102,6 +126,9 @@ post '/sellings' do
   redirect('/sellings/')
 end
 
+# Deletes or buys a listing depending on user and redirects to '/sellings/'
+#
+# @param [Integer] :listingid ID of listing to be deleted
 post '/sellings/:listingid/delete' do
   listingid = params[:listingid]
   listing_data = get_listing_data(listingid)[0]
@@ -123,6 +150,9 @@ post '/sellings/:listingid/delete' do
   end
 end
 
+# Shows user profile
+# 
+# @param [Integer] :userid The ID of the user to be shown
 get '/users/:userid' do
 
   if params[:userid].to_i != session[:userid].to_i
@@ -142,6 +172,11 @@ get '/users/:userid' do
   slim(:'user/show', locals:{user_stocks:user_stocks, userid:params[:userid]})
 end
 
+# Deletes a user and redirects to the landing page, '/'
+#
+# @param [Integer] :userid The ID of the user to be deleted
+#
+# @see Model#delete_user
 post '/users/:userid/delete' do
   if params[:userid].to_i != session[:userid].to_i
     results = get_user_data('users', session[:userid])
@@ -157,6 +192,12 @@ post '/users/:userid/delete' do
   redirect('/')
 end
 
+# Attempts login, updates the session and redirects to '/stocks/' on success
+# 
+# @param [String] username The username
+# @param [String] password The password
+# 
+# @see Model#check_login
 post '/login' do
   username = params[:username]
   password = params[:password]
@@ -196,6 +237,12 @@ post '/login' do
   end
 end
 
+# Attempts user registration and redirects back to login page
+# 
+# @param [String] username The username
+# @param [String] password The password
+# 
+# @see Model#register_user
 post '/register' do
   username = params[:username]
   password = params[:password]
@@ -216,6 +263,7 @@ post '/register' do
   redirect('/')
 end
 
+# Destroys the session and redirects to landing page
 get '/logout/' do
   session.destroy
   redirect('/')

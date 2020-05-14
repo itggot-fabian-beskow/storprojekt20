@@ -103,7 +103,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#add_stock_to_user-instance_method" title="#add_stock_to_user (instance method)">#<strong>add_stock_to_user</strong>(userid, sellerid, stockid, amount)  &#x21d2; Object </a>
+      <a href="#add_stock_to_user-instance_method" title="#add_stock_to_user (instance method)">#<strong>add_stock_to_user</strong>(userid, sellerid, stockid, amount)  &#x21d2; Integer </a>
     
 
     
@@ -117,7 +117,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>Add stock to specified user and remove from seller.</div></span>
   
 </li>
 
@@ -125,7 +125,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#check_login-instance_method" title="#check_login (instance method)">#<strong>check_login</strong>(username, password)  &#x21d2; Object </a>
+      <a href="#check_login-instance_method" title="#check_login (instance method)">#<strong>check_login</strong>(username, password)  &#x21d2; Integer </a>
     
 
     
@@ -139,7 +139,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>Check the login credentials provided against database.</div></span>
   
 </li>
 
@@ -161,7 +161,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>Creates a database entry for new stock.</div></span>
   
 </li>
 
@@ -183,7 +183,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>Deletes listing from database.</div></span>
   
 </li>
 
@@ -191,7 +191,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#get_all_data-instance_method" title="#get_all_data (instance method)">#<strong>get_all_data</strong>(table)  &#x21d2; Object </a>
+      <a href="#delete_user-instance_method" title="#delete_user (instance method)">#<strong>delete_user</strong>(userid)  &#x21d2; Object </a>
     
 
     
@@ -205,7 +205,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>Delete specified user from database.</div></span>
   
 </li>
 
@@ -213,7 +213,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#get_all_listings-instance_method" title="#get_all_listings (instance method)">#<strong>get_all_listings</strong>  &#x21d2; Object </a>
+      <a href="#get_all_data-instance_method" title="#get_all_data (instance method)">#<strong>get_all_data</strong>(table)  &#x21d2; Array </a>
     
 
     
@@ -227,7 +227,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>Get all the information from specified table.</div></span>
   
 </li>
 
@@ -235,7 +235,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#get_listing_data-instance_method" title="#get_listing_data (instance method)">#<strong>get_listing_data</strong>(listingid)  &#x21d2; Object </a>
+      <a href="#get_all_listings-instance_method" title="#get_all_listings (instance method)">#<strong>get_all_listings</strong>  &#x21d2; Array </a>
     
 
     
@@ -249,7 +249,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>Get all listings.</div></span>
   
 </li>
 
@@ -257,7 +257,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#get_stock_data-instance_method" title="#get_stock_data (instance method)">#<strong>get_stock_data</strong>(table, stockid)  &#x21d2; Object </a>
+      <a href="#get_listing_data-instance_method" title="#get_listing_data (instance method)">#<strong>get_listing_data</strong>(listingid)  &#x21d2; Array </a>
     
 
     
@@ -271,7 +271,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>Get data for specific listing.</div></span>
   
 </li>
 
@@ -279,7 +279,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#get_user_data-instance_method" title="#get_user_data (instance method)">#<strong>get_user_data</strong>(table, userid)  &#x21d2; Object </a>
+      <a href="#get_stock_data-instance_method" title="#get_stock_data (instance method)">#<strong>get_stock_data</strong>(table, stockid)  &#x21d2; Array </a>
     
 
     
@@ -293,7 +293,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>Get all the stock data from specified table.</div></span>
   
 </li>
 
@@ -301,7 +301,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#get_user_stocks-instance_method" title="#get_user_stocks (instance method)">#<strong>get_user_stocks</strong>(userid)  &#x21d2; Object </a>
+      <a href="#get_user_data-instance_method" title="#get_user_data (instance method)">#<strong>get_user_data</strong>(table, userid)  &#x21d2; Array </a>
     
 
     
@@ -315,7 +315,29 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>Get all the user data from specified table.</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#get_user_stocks-instance_method" title="#get_user_stocks (instance method)">#<strong>get_user_stocks</strong>(userid)  &#x21d2; Array </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>Get the stock of a single user.</div></span>
   
 </li>
 
@@ -337,7 +359,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>Creates a listing of stock and from user specified.</div></span>
   
 </li>
 
@@ -359,7 +381,7 @@
   
 
   
-    <span class="summary_desc"><div class='inline'></div></span>
+    <span class="summary_desc"><div class='inline'>Register new user in database.</div></span>
   
 </li>
 
@@ -376,50 +398,138 @@
       <div class="method_details first">
   <h3 class="signature first" id="add_stock_to_user-instance_method">
   
-    #<strong>add_stock_to_user</strong>(userid, sellerid, stockid, amount)  &#x21d2; <tt>Object</tt> 
+    #<strong>add_stock_to_user</strong>(userid, sellerid, stockid, amount)  &#x21d2; <tt>Integer</tt> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    Add stock to specified user and remove from seller
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>userid</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>ID of user buying stock</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>sellerid</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>ID of seller</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>stockid</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>ID of stock being sold</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>amount</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>Amount of stock being sold</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>-1 if false else 0</div>
+      
+    </li>
+  
+</ul>
+
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-63
-64
-65
-66
-67
-68
-69
-70
-71
-72
-73
-74
-75
-76
-77
-78
-79
-80
-81
-82
-83
-84
-85
-86
-87
-88
-89
-90
-91</pre>
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'model.rb', line 63</span>
+      <pre class="code"><span class="info file"># File 'model.rb', line 119</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add_stock_to_user'>add_stock_to_user</span><span class='lparen'>(</span><span class='id identifier rubyid_userid'>userid</span><span class='comma'>,</span> <span class='id identifier rubyid_sellerid'>sellerid</span><span class='comma'>,</span> <span class='id identifier rubyid_stockid'>stockid</span><span class='comma'>,</span> <span class='id identifier rubyid_amount'>amount</span><span class='rparen'>)</span>
 
@@ -449,6 +559,7 @@
   <span class='kw'>end</span>
 
   <span class='gvar'>$db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>UPDATE relation_user_stock SET amount = amount - ? WHERE stockid = ? AND userid = ?</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_amount'>amount</span><span class='comma'>,</span> <span class='id identifier rubyid_stockid'>stockid</span><span class='comma'>,</span> <span class='id identifier rubyid_sellerid'>sellerid</span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='int'>0</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -458,24 +569,77 @@
       <div class="method_details ">
   <h3 class="signature " id="check_login-instance_method">
   
-    #<strong>check_login</strong>(username, password)  &#x21d2; <tt>Object</tt> 
+    #<strong>check_login</strong>(username, password)  &#x21d2; <tt>Integer</tt> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    Check the login credentials provided against database
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>username</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The username</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>password</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The password</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The ID of the user if true, else -1</div>
+      
+    </li>
+  
+</ul>
+
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-9
-10
-11
-12
-13
-14
 15
 16
 17
@@ -486,10 +650,16 @@
 22
 23
 24
-25</pre>
+25
+26
+27
+28
+29
+30
+31</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'model.rb', line 9</span>
+      <pre class="code"><span class="info file"># File 'model.rb', line 15</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_check_login'>check_login</span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='comma'>,</span> <span class='id identifier rubyid_password'>password</span><span class='rparen'>)</span>
 
@@ -522,18 +692,61 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    Creates a database entry for new stock
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>stockname</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The name of the stock to be created</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>amount</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The amount of stock to be created</div>
+      
+    </li>
+  
+</ul>
+
+
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-39
-40
-41</pre>
+64
+65
+66</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'model.rb', line 39</span>
+      <pre class="code"><span class="info file"># File 'model.rb', line 64</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create_stock'>create_stock</span><span class='lparen'>(</span><span class='id identifier rubyid_stockname'>stockname</span><span class='comma'>,</span> <span class='id identifier rubyid_amount'>amount</span><span class='rparen'>)</span>
   <span class='gvar'>$db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>INSERT INTO stocks (stockname, amount) VALUES (?, ?)</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_stockname'>stockname</span><span class='comma'>,</span> <span class='id identifier rubyid_amount'>amount</span><span class='rparen'>)</span>
@@ -552,18 +765,47 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    Deletes listing from database
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>listingid</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>ID of listing to be deleted</div>
+      
+    </li>
+  
+</ul>
+
+
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-59
-60
-61</pre>
+107
+108
+109</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'model.rb', line 59</span>
+      <pre class="code"><span class="info file"># File 'model.rb', line 107</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delete_listing'>delete_listing</span><span class='lparen'>(</span><span class='id identifier rubyid_listingid'>listingid</span><span class='rparen'>)</span>
   <span class='gvar'>$db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>DELETE FROM relation_user_stock_sale WHERE id=?</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_listingid'>listingid</span><span class='rparen'>)</span>
@@ -574,26 +816,130 @@
 </div>
     
       <div class="method_details ">
-  <h3 class="signature " id="get_all_data-instance_method">
+  <h3 class="signature " id="delete_user-instance_method">
   
-    #<strong>get_all_data</strong>(table)  &#x21d2; <tt>Object</tt> 
-  
-
+    #<strong>delete_user</strong>(userid)  &#x21d2; <tt>Object</tt> 
   
 
   
-</h3><table class="source_code">
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Delete specified user from database
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>userid</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The ID of user to be deleted</div>
+      
+    </li>
+  
+</ul>
+
+
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-31
-32
-33</pre>
+162
+163
+164</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'model.rb', line 31</span>
+      <pre class="code"><span class="info file"># File 'model.rb', line 162</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_delete_user'>delete_user</span><span class='lparen'>(</span><span class='id identifier rubyid_userid'>userid</span><span class='rparen'>)</span> 
+  <span class='gvar'>$db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>DELETE FROM users WHERE userid=?</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_userid'>userid</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="get_all_data-instance_method">
+  
+    #<strong>get_all_data</strong>(table)  &#x21d2; <tt>Array</tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    Get all the information from specified table
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>table</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The name of the table</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>Array of all information from the table</div>
+      
+    </li>
+  
+</ul>
+
+
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+46
+47
+48</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'model.rb', line 46</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_all_data'>get_all_data</span><span class='lparen'>(</span><span class='id identifier rubyid_table'>table</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='gvar'>$db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SELECT * FROM </span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_table'>table</span><span class='rparen'>)</span><span class='semicolon'>;</span>
@@ -606,27 +952,54 @@
       <div class="method_details ">
   <h3 class="signature " id="get_all_listings-instance_method">
   
-    #<strong>get_all_listings</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>get_all_listings</strong>  &#x21d2; <tt>Array</tt> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    Get all listings
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>Array of all listings</div>
+      
+    </li>
+  
+</ul>
+
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-51
-52
-53</pre>
+91
+92
+93</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'model.rb', line 51</span>
+      <pre class="code"><span class="info file"># File 'model.rb', line 91</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_all_listings'>get_all_listings</span><span class='lparen'>(</span><span class='rparen'>)</span>
-  <span class='gvar'>$db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SELECT relation_user_stock_sale.id, relation_user_stock_sale.amount, relation_user_stock_sale.price, relation_user_stock_sale.userid, users.username, stocks.stockname FROM ((relation_user_stock_sale INNER JOIN users ON relation_user_stock_sale.userid = users.userid) INNER JOIN stocks ON relation_user_stock_sale.stockid = stocks.stockid);</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
+  <span class='kw'>return</span> <span class='gvar'>$db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SELECT relation_user_stock_sale.id, relation_user_stock_sale.amount, relation_user_stock_sale.price, relation_user_stock_sale.userid, users.username, stocks.stockname FROM ((relation_user_stock_sale INNER JOIN users ON relation_user_stock_sale.userid = users.userid) INNER JOIN stocks ON relation_user_stock_sale.stockid = stocks.stockid);</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -636,24 +1009,69 @@
       <div class="method_details ">
   <h3 class="signature " id="get_listing_data-instance_method">
   
-    #<strong>get_listing_data</strong>(listingid)  &#x21d2; <tt>Object</tt> 
+    #<strong>get_listing_data</strong>(listingid)  &#x21d2; <tt>Array</tt> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    Get data for specific listing
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>listingid</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>ID of the listing</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>Array of information about single listing</div>
+      
+    </li>
+  
+</ul>
+
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-55
-56
-57</pre>
+100
+101
+102</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'model.rb', line 55</span>
+      <pre class="code"><span class="info file"># File 'model.rb', line 100</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_listing_data'>get_listing_data</span><span class='lparen'>(</span><span class='id identifier rubyid_listingid'>listingid</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='gvar'>$db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SELECT * FROM relation_user_stock_sale WHERE id = ?</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_listingid'>listingid</span><span class='rparen'>)</span>
@@ -666,24 +1084,83 @@
       <div class="method_details ">
   <h3 class="signature " id="get_stock_data-instance_method">
   
-    #<strong>get_stock_data</strong>(table, stockid)  &#x21d2; <tt>Object</tt> 
+    #<strong>get_stock_data</strong>(table, stockid)  &#x21d2; <tt>Array</tt> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    Get all the stock data from specified table
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>table</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The name of the table</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>stockid</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The ID of the sock to fetch information for</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>All stock information from table</div>
+      
+    </li>
+  
+</ul>
+
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-43
-44
-45</pre>
+74
+75
+76</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'model.rb', line 43</span>
+      <pre class="code"><span class="info file"># File 'model.rb', line 74</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_stock_data'>get_stock_data</span><span class='lparen'>(</span><span class='id identifier rubyid_table'>table</span><span class='comma'>,</span> <span class='id identifier rubyid_stockid'>stockid</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='gvar'>$db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SELECT * FROM </span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_table'>table</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'> WHERE stockid = ?</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_stockid'>stockid</span><span class='rparen'>)</span>
@@ -696,24 +1173,83 @@
       <div class="method_details ">
   <h3 class="signature " id="get_user_data-instance_method">
   
-    #<strong>get_user_data</strong>(table, userid)  &#x21d2; <tt>Object</tt> 
+    #<strong>get_user_data</strong>(table, userid)  &#x21d2; <tt>Array</tt> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    Get all the user data from specified table
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>table</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The name of the table</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>userid</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The ID of user to fetch information for</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>All user information from that table</div>
+      
+    </li>
+  
+</ul>
+
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-35
-36
-37</pre>
+56
+57
+58</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'model.rb', line 35</span>
+      <pre class="code"><span class="info file"># File 'model.rb', line 56</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_user_data'>get_user_data</span><span class='lparen'>(</span><span class='id identifier rubyid_table'>table</span><span class='comma'>,</span> <span class='id identifier rubyid_userid'>userid</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='gvar'>$db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SELECT * FROM </span><span class='tstring_end'>&#39;</span></span> <span class='op'>+</span> <span class='id identifier rubyid_table'>table</span> <span class='op'>+</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'> WHERE userid = ?</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_userid'>userid</span><span class='rparen'>)</span>
@@ -726,24 +1262,69 @@
       <div class="method_details ">
   <h3 class="signature " id="get_user_stocks-instance_method">
   
-    #<strong>get_user_stocks</strong>(userid)  &#x21d2; <tt>Object</tt> 
+    #<strong>get_user_stocks</strong>(userid)  &#x21d2; <tt>Array</tt> 
   
 
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    Get the stock of a single user
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>userid</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>ID of user</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>Contains all the data for users stocks</div>
+      
+    </li>
+  
+</ul>
+
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-93
-94
-95</pre>
+155
+156
+157</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'model.rb', line 93</span>
+      <pre class="code"><span class="info file"># File 'model.rb', line 155</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_user_stocks'>get_user_stocks</span><span class='lparen'>(</span><span class='id identifier rubyid_userid'>userid</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='gvar'>$db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>SELECT stocks.stockname, relation_user_stock.stockid, relation_user_stock.amount FROM relation_user_stock INNER JOIN stocks ON relation_user_stock.stockid = stocks.stockid WHERE userid=?</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_userid'>userid</span><span class='rparen'>)</span>
@@ -762,18 +1343,89 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    Creates a listing of stock and from user specified
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>userid</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The ID of user selling stock</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>stockid</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The ID of stock to be sold</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>amount</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The amount of stock to be sold</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>price</span>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The price of all the stock</div>
+      
+    </li>
+  
+</ul>
+
+
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-47
-48
-49</pre>
+84
+85
+86</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'model.rb', line 47</span>
+      <pre class="code"><span class="info file"># File 'model.rb', line 84</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_post_selling'>post_selling</span><span class='lparen'>(</span><span class='id identifier rubyid_userid'>userid</span><span class='comma'>,</span> <span class='id identifier rubyid_stockid'>stockid</span><span class='comma'>,</span> <span class='id identifier rubyid_amount'>amount</span><span class='comma'>,</span> <span class='id identifier rubyid_price'>price</span><span class='rparen'>)</span>
   <span class='gvar'>$db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>INSERT INTO relation_user_stock_sale (userid, stockid, amount, price) VALUES (?, ?, ?, ?)</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_userid'>userid</span><span class='comma'>,</span> <span class='id identifier rubyid_stockid'>stockid</span><span class='comma'>,</span> <span class='id identifier rubyid_amount'>amount</span><span class='comma'>,</span> <span class='id identifier rubyid_price'>price</span><span class='rparen'>)</span>
@@ -792,18 +1444,61 @@
   
 
   
-</h3><table class="source_code">
+</h3><div class="docstring">
+  <div class="discussion">
+    Register new user in database
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>username</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The username</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>password</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>The password</div>
+      
+    </li>
+  
+</ul>
+
+
+
+
+</div><table class="source_code">
   <tr>
     <td>
       <pre class="lines">
 
 
-27
-28
-29</pre>
+37
+38
+39</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'model.rb', line 27</span>
+      <pre class="code"><span class="info file"># File 'model.rb', line 37</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_register_user'>register_user</span><span class='lparen'>(</span><span class='id identifier rubyid_username'>username</span><span class='comma'>,</span> <span class='id identifier rubyid_password_digest'>password_digest</span><span class='rparen'>)</span>
   <span class='gvar'>$db</span><span class='period'>.</span><span class='id identifier rubyid_execute'>execute</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>INSERT INTO users (username, password_digest) VALUES (?, ?)</span><span class='tstring_end'>&#39;</span></span><span class='comma'>,</span> <span class='id identifier rubyid_username'>username</span><span class='comma'>,</span> <span class='id identifier rubyid_password_digest'>password_digest</span><span class='rparen'>)</span>
@@ -818,7 +1513,7 @@
 </div>
 
       <div id="footer">
-  Generated on Sun Apr 26 17:50:38 2020 by
+  Generated on Wed May 13 23:01:48 2020 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.24 (ruby-2.7.1).
 </div>
